@@ -44,8 +44,9 @@ deletePersonHandler =  (personIndex) => {
   render() {
 
     const style = {
-      backgroundColor: 'white',
+      backgroundColor: 'green',
       font: 'inherit',
+      color: 'white',
       border: '1px solid blue',
       padding: '8px',
       cursor: 'pointer'
@@ -53,6 +54,7 @@ deletePersonHandler =  (personIndex) => {
 
     let persons = null;
     if (this.state.showPersons) {
+      style.backgroundColor = 'red';
       persons = (
         <div>
           {this.state.persons.map((person,index)=>{
@@ -68,11 +70,18 @@ deletePersonHandler =  (personIndex) => {
           </div>
       )
     }
+    
+    let classes = [];
+
+    if (this.state.persons.length <=2) {classes=['red','bold']}
+
+    else {classes=['blue','italic']}
+
     return (
       
       <div className="App">
         <h1>Hi, I am a react app</h1>
-        <p>this is working!</p>
+        <p className={classes.join(' ')}>this is working!</p>
         <button
           style={style}
           onClick={this.togglePersonsHandler}>Toggle Persons</button>
